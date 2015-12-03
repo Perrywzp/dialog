@@ -9,7 +9,7 @@
 				sticky: 			false,				// should the toast item sticky or not?
 				type: 				'notice', 			// notice, warning, error, success
                 position:           'top-right',        // top-left, top-center, top-right, middle-left, middle-center, middle-right ... Position of the toast container holding different toast. Position can be set only once at the very first call, changing the position after the first call does nothing
-                closeText:          '',                 // text which will be shown as close button, set to '' when you want to introduce an image via css
+                closeText:          '123123',                 // text which will be shown as close button, set to '' when you want to introduce an image via css
                 close:              null                // callback function when the toastmessage is closed
             };
 
@@ -28,12 +28,21 @@
 
 			// declare variables
             var toastWrapAll, toastItemOuter, toastItemInner, toastItemClose, toastItemImage;
-
-			toastWrapAll	= (!$('.toast-container').length) ? $('<div></div>').addClass('toast-container').addClass('toast-position-' + localSettings.position).appendTo('body') : $('.toast-container');
-			toastItemOuter	= $('<div></div>').addClass('toast-item-wrapper');
-			toastItemInner	= $('<div></div>').hide().addClass('toast-item toast-type-' + localSettings.type).appendTo(toastWrapAll).html($('<p>').append (localSettings.text)).animate(localSettings.inEffect, localSettings.inEffectDuration).wrap(toastItemOuter);
-			toastItemClose	= $('<div></div>').addClass('toast-item-close').prependTo(toastItemInner).html(localSettings.closeText).click(function() { $().toastmessage('removeToast',toastItemInner, localSettings) });
-			toastItemImage  = $('<div></div>').addClass('toast-item-image').addClass('toast-item-image-' + localSettings.type).prependTo(toastItemInner);
+    			toastWrapAll	= (!$('.toast-container').length) ? $('<div></div>').addClass('toast-container').addClass('toast-position-' + localSettings.position).appendTo('body') : $('.toast-container');
+    			toastItemOuter	= $('<div></div>').addClass('toast-item-wrapper');
+    			toastItemInner	= $('<div></div>').hide().addClass('toast-item toast-type-' + localSettings.type).appendTo(toastWrapAll).html($('<p>').append (localSettings.text)).animate(localSettings.inEffect, localSettings.inEffectDuration).wrap(toastItemOuter);
+            if(localSettings.type === 'warning'){
+                toastItemOuter.css({background:"rgba(15,32,52,.8)","border":"2px solid rgba(26,170,63,.9)"});
+                // toastItemClose	= $('<div></div>').addClass('toast-item-close').prependTo(toastItemInner).html(localSettings.closeText).click(function() { $().toastmessage('removeToast',toastItemInner, localSettings); });
+                toastItemConfirm= $('<div></div>').addClass('toast-item-confirm').text("确 定").css({background:"rgba(15,32,52,.8)"}).insertAfter(toastItemInner).click(function() { $().toastmessage('removeToast',toastItemInner, localSettings); });
+    			toastItemImage  = $('<div></div>').addClass('toast-item-image').addClass('toast-item-image-' + localSettings.type).prependTo(toastItemInner);
+            }
+            else if(localSettings.type === 'success'){
+                toastItemOuter.css({background:"rgba(16,31,52,.8)","border":"2px solid rgba(92,103,117,1)"});
+            }
+            else if(localSettings.type === 'error'){
+                toastItemOuter.css({background:"rgba(15,32,52,.8)","border":"2px solid rgba(122,28,44,.8)"});
+            }
 
             if(navigator.userAgent.match(/MSIE 6/i))
 			{
@@ -73,23 +82,23 @@
         {
             var options = {text : message, type : 'warning'};
             return $().toastmessage('showToast', options);
-        }
+        },
 
-		// removeToast: function(obj, options)
-		// {
-		// 	obj.animate({opacity: '0'}, 600, function()
-		// 	{
-		// 		obj.parent().animate({height: '0px'}, 300, function()
-		// 		{
-		// 			obj.parent().remove();
-		// 		});
-		// 	});
-  //           // callback
-  //           if (options && options.close !== null)
-  //           {
-  //               options.close();
-  //           }
-		// }
+		removeToast: function(obj, options)
+		{
+			obj.animate({opacity: '0'}, 600, function()
+			{
+				obj.parent().animate({height: '0px'}, 300, function()
+				{
+					obj.parent().remove();
+				});
+			});
+            // callback
+            if (options && options.close !== null)
+            {
+                options.close();
+            }
+		}
 	};
 
     $.fn.toastmessage = function( method ) {

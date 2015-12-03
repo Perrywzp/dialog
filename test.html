@@ -13,7 +13,7 @@
         $(function(){
             $("#btn1").click(function(){
                 $().toastmessage('showToast', {
-                    text: 'Success Dialog which is sticky',
+                    text: '操作成功!',
                     sticky: true,
                     position: 'top-right',
                     type: 'success',
@@ -22,75 +22,40 @@
                         console.log("toast is closed ...");
                     }
                 });
-
             });
             $("#btn2").click(function(){
-                  $().toastmessage('showNoticeToast', "Notice  Dialog which is fading away ...");
+                $().toastmessage('showToast', {
+                    text: '操作失败!',
+                    sticky: true,
+                    position: 'top-right',
+                    type: 'error',
+                    closeText: '',
+                    close: function() {
+                        console.log("toast is closed ...");
+                    }
+                });
+                // $().toastmessage('showErrorToast', "Error Dialog which is fading away ...");
             });
             $("#btn3").click(function(){
-                    $().toastmessage('showToast', {
-                        text: 'Notice Dialog which is sticky',
-                        sticky: false,
-                        position: 'top-right',
-                        type: 'notice',
-                        closeText: '',
-                        close: function() {
-                            console.log("toast is closed ...");
-                        }
-                    });
-            });
-            $("#btn4").click(function(){
-                     $().toastmessage('showWarningToast', "Warning Dialog which is fading away ...");
-            });
-            $("#btn5").click(function(){
-                      $().toastmessage('showToast', {
-                        text: 'Warning Dialog which is sticky',
-                        sticky: false,
-                        position: 'top-right',
-                        type: 'warning',
-                        closeText: '',
-                        close: function() {
-                            console.log("toast is closed ...");
-                        }
-                    });
-            });
-            $("#btn6").click(function(){
-                      $().toastmessage('showErrorToast', "Error Dialog which is fading away ...");
-            });
-            $("#btn7").click(function(){
-                      $().toastmessage('showToast', {
-                        text: 'Error Dialog which is sticky',
-                        sticky: true,
-                        position: 'top-right',
-                        type: 'error',
-                        closeText: '',
-                        close: function() {
-                            console.log("toast is closed ...");
-                        }
-                    });
-            });
-            $("#btn8").click(function(){
-                     $().toastmessage('showToast', {
-                        text: 'Success Dialog which is sticky',
-                        sticky: true,
-                        position: 'top-right',
-                        type: 'success',
-                        closeText: '',
-                        close: function() {
-                            console.log("toast is closed ...");
-                        }
-                    });
+                $().toastmessage('showToast', {
+                    text: 'warning',
+                    sticky: true,
+                    position: 'top-right',
+                    type: 'warning',
+                    closeText: '',
+                    close: function() {
+                        console.log("toast is closed ...");
+                    }
+                });
+                // $().toastmessage('showWarningToast', "Warning Dialog which is fading away ...");
             });
         });
     </script>
 </head>
 <body>
-    <div id="btn1">点击</div>
-    <div id="btn2">点击</div>
-    <div id="btn3">点击</div>
-    <div id="btn4">点击</div>
-    <div id="btn5">点击</div>
-    <div id="btn6">点击</div>
-    <div id="btn7">点击</div>
+    <div id="btn1">success</div>
+    <div id="btn2">error</div>
+    <div id="btn3">warning</div>
+    
 </body>
 </html>
