@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./main/resources/css/jquery.toastmessage.css">
+    <script type="text/javascript" src="./test/javascript/lib/jquery-1.5.min.js"></script>
+    <script type="text/javascript" src="./main/javascript/jquery.toastmessage.js"></script>
+    <style>
+    #btn1,#btn2,#btn3,#btn4,#btn5,#btn6,#btn7,#btn8{width:50px;height:22px;line-height: 22px;background-color: rgba(255,255,000,.2);color:#333;text-align: center;margin:10px;cursor:pointer;}
+    </style>
+    <script type="text/javascript">
+        $(function(){
+            $("#btn1").click(function(){
+                $().toastmessage('showToast', {
+                    text: 'Success Dialog which is sticky',
+                    sticky: true,
+                    position: 'top-right',
+                    type: 'success',
+                    closeText: '',
+                    close: function() {
+                        console.log("toast is closed ...");
+                    }
+                });
+
+            });
+            $("#btn2").click(function(){
+                  $().toastmessage('showNoticeToast', "Notice  Dialog which is fading away ...");
+            });
+            $("#btn3").click(function(){
+                    $().toastmessage('showToast', {
+                        text: 'Notice Dialog which is sticky',
+                        sticky: false,
+                        position: 'top-right',
+                        type: 'notice',
+                        closeText: '',
+                        close: function() {
+                            console.log("toast is closed ...");
+                        }
+                    });
+            });
+            $("#btn4").click(function(){
+                     $().toastmessage('showWarningToast', "Warning Dialog which is fading away ...");
+            });
+            $("#btn5").click(function(){
+                      $().toastmessage('showToast', {
+                        text: 'Warning Dialog which is sticky',
+                        sticky: false,
+                        position: 'top-right',
+                        type: 'warning',
+                        closeText: '',
+                        close: function() {
+                            console.log("toast is closed ...");
+                        }
+                    });
+            });
+            $("#btn6").click(function(){
+                      $().toastmessage('showErrorToast', "Error Dialog which is fading away ...");
+            });
+            $("#btn7").click(function(){
+                      $().toastmessage('showToast', {
+                        text: 'Error Dialog which is sticky',
+                        sticky: true,
+                        position: 'top-right',
+                        type: 'error',
+                        closeText: '',
+                        close: function() {
+                            console.log("toast is closed ...");
+                        }
+                    });
+            });
+            $("#btn8").click(function(){
+                     $().toastmessage('showToast', {
+                        text: 'Success Dialog which is sticky',
+                        sticky: true,
+                        position: 'top-right',
+                        type: 'success',
+                        closeText: '',
+                        close: function() {
+                            console.log("toast is closed ...");
+                        }
+                    });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="btn1">点击</div>
+    <div id="btn2">点击</div>
+    <div id="btn3">点击</div>
+    <div id="btn4">点击</div>
+    <div id="btn5">点击</div>
+    <div id="btn6">点击</div>
+    <div id="btn7">点击</div>
+</body>
+</html>
